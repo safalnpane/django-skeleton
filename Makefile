@@ -1,6 +1,6 @@
 # Django skeleton Makefile
 
-VENV_DIR := pyvenvs
+VENV_DIR := "$(HOME)/.pyvenvs"
 PYTHON = python3
 PROJECT_NAME := $(or $(PROJECT_NAME),$(error PROJECT_NAME is not set. Set it using export PROJECT_NAME=<your_project_name>))
 VENV_ACTIVATE_PATH := $(VENV_DIR)/$(PROJECT_NAME)/bin/activate
@@ -16,10 +16,13 @@ venv:
 	@$(PYTHON) -m venv $(VENV_DIR)/$(PROJECT_NAME)
 	@echo "Virtual environment created: $(VENV_DIR)/$(PROJECT_NAME)"
 	@echo "Activate with: source $(VENV_DIR)/$(PROJECT_NAME)/bin/activate"
+	@echo "Try: \n\n alias activate='source $(VENV_DIR)/$(PROJECT_NAME)/bin/activate'\n"
+	@echo "And activate with: activate"
 
 cleanvenv:
 	@echo "Removing virtual environment: $(VENV_DIR)/$(PROJECT_NAME)"
-	@rm -rf $(VENV_DIR)
+	@rm -rf "$(VENV_DIR)/$(PROJECT_NAME)"
+	@echo "Done"
 
 django:
 	@$(VENV_ACTIVATE) && python -m pip install --upgrade pip
