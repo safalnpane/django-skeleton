@@ -26,7 +26,7 @@ cleanvenv:
 
 django:
 	@$(VENV_ACTIVATE) && python -m pip install --upgrade pip
-	@$(VENV_ACTIVATE) && python -m pip install django pytest pylint pylint-django
+	@$(VENV_ACTIVATE) && python -m pip install django
 	@$(VENV_ACTIVATE) && django-admin startproject "$(PROJECT_NAME)" .
 
 # Install dependencies
@@ -43,7 +43,7 @@ app:
 	@$(PYTHON) manage.py startapp $(NAME)
 
 # Makemigrations
-makemigrations:
+migrations:
 	@$(PYTHON) manage.py makemigrations $(APP)
 
 # Migrate
