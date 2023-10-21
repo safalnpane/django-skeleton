@@ -7,7 +7,6 @@ PROJECT_NAME := $(or $(PROJECT_NAME),$(error PROJECT_NAME is not set. Set it usi
 # Create a virtual environment
 venv:
 	@mkdir -p $(VENV_DIR)
-	@VENV_NAME=$$(mktemp -u $(PROJECT_NAME)_XXX); \
-	$(PYTHON) -m venv $(VENV_DIR)/$$VENV_NAME; \
-	echo "Virtual environment created: $(VENV_DIR)/$$VENV_NAME"; \
-	echo "Activate with: source $(VENV_DIR)/$$VENV_NAME/bin/activate"
+	@$(PYTHON) -m venv $(VENV_DIR)/$(PROJECT_NAME)
+	@echo "Virtual environment created: $(VENV_DIR)/$(PROJECT_NAME)"
+	@echo "Activate with: source $(VENV_DIR)/$(PROJECT_NAME)/bin/activate"
