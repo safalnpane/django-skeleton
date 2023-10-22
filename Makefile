@@ -24,7 +24,17 @@ cleanvenv:
 	@rm -rf "$(VENV_DIR)/$(PROJECT_NAME)"
 	@echo "Done"
 
-django:
+resetgit:
+	# If you've cloned the skeleton, you'll want to reset the git directory.
+	# This will remove the git directory and re-initialize it.
+	# This is useful if you want to use the skeleton as a starting point for a new project.
+	@echo "Removing git directory..."
+	@rm -rf .git
+	@echo "Re-initializing git directory..."
+	@git init
+	@echo "Done"
+
+django: resetgit
 	@$(VENV_ACTIVATE) && python -m pip install --upgrade pip
 	@$(VENV_ACTIVATE) && python -m pip install django
 	@$(VENV_ACTIVATE) && django-admin startproject "$(PROJECT_NAME)" .
