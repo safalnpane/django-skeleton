@@ -3,9 +3,6 @@
 VENV_DIR := "$(HOME)/.pyvenvs"
 PYTHON = python3
 PROJECT_NAME := $(or $(PROJECT_NAME),$(error PROJECT_NAME is not set. Set it using export PROJECT_NAME=<your_project_name>))
-VENV_ACTIVATE_PATH := $(VENV_DIR)/$(PROJECT_NAME)/bin/activate
-VENV_ACTIVATE := source $(VENV_ACTIVATE_PATH)
-
 
 # Django specific
 APP ?= ""
@@ -34,10 +31,10 @@ resetgit:
 	@git init
 	@echo "Done"
 
-django: resetgit
-	@$(VENV_ACTIVATE) && python -m pip install --upgrade pip
-	@$(VENV_ACTIVATE) && python -m pip install django
-	@$(VENV_ACTIVATE) && django-admin startproject "$(PROJECT_NAME)" .
+django:
+	@python -m pip install --upgrade pip
+	@python -m pip install django
+	@django-admin startproject "$(PROJECT_NAME)" .
 
 # Install dependencies
 install:

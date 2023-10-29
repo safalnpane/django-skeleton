@@ -17,7 +17,7 @@ make venv
 4. I suggest you create the alias for activating the venv.
 5. Setup Django project:
 ```bash
-# You don't need to activate venv for this.
+# You need to activate venv for this.
 make django
 ```
 6. Activate `venv` and start working.
